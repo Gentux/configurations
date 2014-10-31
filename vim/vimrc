@@ -1,0 +1,152 @@
+set nocompatible            " Use Vim defaults (much better!)
+set fileencodings=utf-8     " Encodage UTF-8
+
+filetype plugin indent on
+
+set expandtab           " On utilise des espace plutot que des tabulation
+
+if has("autocmd")
+    " When editing a file, always jump to the last cursor position
+    autocmd BufReadPost *
+                \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+                \   exe "normal! g'\"" |
+                \ endif
+
+    " don't write swapfile on most commonly used directories for
+    " NFS mounts or USB sticks
+    autocmd BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
+
+    autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+    autocmd BufRead *.py set nocindent
+    "autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
+
+    au BufWinEnter *.mako set syntax=mako
+    au BufWinEnter *.mustache set syntax=mako
+    autocmd BufEnter * :syntax sync fromstart
+
+endif
+
+if has("gui_running")
+    set guioptions=         " Empty guioptions to avoid annoying toolbar
+    set guioptions+=a       " Auto-select
+    set guioptions+=c       " Console-like dialog
+    set guioptions+=i       " Set windows icon
+
+    "colorscheme leo
+    colorscheme solarized
+endif
+
+set dictionary+=%
+set complete+=k
+
+set colorcolumn=+1      " Display a vertical line to show the line length limit
+
+" On efface tout les markeur de recherche avec <space>
+nnoremap <silent> <Space> :silent noh<Bar>echo<CR>
+
+" Comment out selected line
+"vnoremap <leader>c <C-v>0I#<ESC>
+
+" Save Syndrom Decease
+map     <F2>    :wa<bar>exe<space>"mksession! ~/sessions/".split(getcwd(), '/')[-1]<CR>
+imap    <F2>    <c-o><F2>
+
+" NERDTree Toggle
+map     <F4>    :NERDTreeToggle<CR>
+imap    <F4>    <ESC><F4>a
+
+" Moving tab to tab
+noremap     <F8>    gT
+noremap     <F9>    gt
+
+imap    <F8>    <c-o><F8>
+imap    <F9>    <c-o><F9>
+
+map     <M-n>   <C-w>w
+imap     <M-n>   <C-w>w
+
+syntax on               " Coloration Syntaxique
+set bg=dark             " Set Background pour la visibilité
+
+set number                      " Numero de ligne
+set title                       " Change le titre de la fenetre
+set titlestring=%<[%{split(getcwd(),'/')[-1]}]\ -\ %f%=%l/%L-%P  " Définit le titre de la fenetre
+set titlelen=50
+
+set showmatch           " Show matching brackets.
+set hlsearch            " Color le texte qui match la recherche
+
+set tw=120              " Largeur d'une ligne a 120 char
+set nowrap              " Ne pas couper les lignes trop longue
+set sidescroll=5        " un Scroll horizontale plus doux
+set scrolloff=4         " 4 ligne visible au dessus/dessous du curseur
+
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
+
+" iskeyword (isk for short) definit ce qu'est un mot
+set iskeyword=a-z       " Peut contenire les lettre de 'a' à 'z'
+set isk+=A-Z            " Peut contenire les lettre de 'A' à 'Z'
+set isk+=48-57          " Peut contenire les chiffres de 0 à 9
+set isk+=_              " Peut contenire '_'
+set isk+=-              " Peut contenire '-'
+
+set history=100         " Keep 100 lines of command line history
+set viminfo='20,\"50    " read/write a .viminfo file, don't store more
+set bs=indent,eol,start " allow backspacing over everything in insert mode
+
+" session options, when saving my work
+"   Blank pages
+"   Current dir
+"   Help pages
+"   Open tabs
+set ssop=blank,buffers,curdir,localoptions,options,resize,tabpages,winpos,winsize
+
+set showcmd             " Show (partial) command in status line.
+set mouse=a
+
+set showtabline=2       " Affiche en permanence la tab barre
+set laststatus=2        " Affiche en permanence la barre de status
+
+set statusline=%<       " Truncate line if too long
+set stl+=%n\            " Buffer number
+set stl+=%f\            " Name of current file (relative path)
+set stl+=%m             " Modified flag "[+]"
+set stl+=%r             " Read-Only flag
+set stl+=%h             " Help flag
+set stl+=%w             " Don't know this one
+set stl+=%y\            " File Type
+set stl+=%=             " Separate Right and Left Side
+set stl+=line\ %03.3l   " Line number
+set stl+=\ ,              " a Coma
+set stl+=col\ %03.3c\   " Column number
+set stl+=%03.3p%%       " Percentage
+
+set ruler               " show the cursor position all the time
+
+set wmnu                    " Un menu qui déchire : Wildmenu
+set wim=longest:full,full   " Wildmode
+set wig=*.o,*#,*~,*.dll,*.so,*.a,*.pyc
+
+"definit une priorité par les extensions : test.jpg avant test.png
+set suffixes=.jpg,.png,.jpeg,.gif,.bak,~,.swp,.swo,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyo
+
+set directory=/tmp
+
+"let html_my_rendering=0
+let html_no_rendering=1
+
+" GitGrep implemantation
+" http://vim.wikia.com/wiki/Git_grep
+func GitGrep(...)
+    let save = &grepprg
+    set grepprg=git\ grep\ -n\ $*
+    let s = 'grep'
+    for i in a:000
+        let s = s . ' ' . i
+    endfor
+    exe s
+    let &grepprg = save
+endfun
+command -nargs=? G call GitGrep(<f-args>)
