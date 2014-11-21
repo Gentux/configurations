@@ -3,8 +3,6 @@ set fileencodings=utf-8     " Encodage UTF-8
 
 filetype plugin indent on
 
-set expandtab           " On utilise des espace plutot que des tabulation
-
 if has("autocmd")
     " When editing a file, always jump to the last cursor position
     autocmd BufReadPost *
@@ -16,30 +14,12 @@ if has("autocmd")
     " NFS mounts or USB sticks
     autocmd BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
 
-    autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-    autocmd BufRead *.py set nocindent
-    "autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
-
     au BufWinEnter *.mako set syntax=mako
-    au BufWinEnter *.mustache set syntax=mako
     autocmd BufEnter * :syntax sync fromstart
-
-endif
-
-if has("gui_running")
-    set guioptions=         " Empty guioptions to avoid annoying toolbar
-    set guioptions+=a       " Auto-select
-    set guioptions+=c       " Console-like dialog
-    set guioptions+=i       " Set windows icon
-
-    "colorscheme leo
-    colorscheme solarized
 endif
 
 set dictionary+=%
 set complete+=k
-
-set colorcolumn=+1      " Display a vertical line to show the line length limit
 
 " On efface tout les markeur de recherche avec <space>
 nnoremap <silent> <Space> :silent noh<Bar>echo<CR>
@@ -63,20 +43,31 @@ imap    <F8>    <c-o><F8>
 imap    <F9>    <c-o><F9>
 
 map     <M-n>   <C-w>w
+map     <M-h>   <C-w>h
+map     <M-j>   <C-w>j
+map     <M-k>   <C-w>k
+map     <M-l>   <C-w>l
 imap     <M-n>   <C-w>w
+imap     <M-h>   <C-w>h
+imap     <M-j>   <C-w>j
+imap     <M-k>   <C-w>k
+imap     <M-l>   <C-w>l
 
 syntax on               " Coloration Syntaxique
 set bg=dark             " Set Background pour la visibilité
+set expandtab           " On utilise des espace plutot que des tabulation
 
-set number                      " Numero de ligne
-set title                       " Change le titre de la fenetre
+set number              " Numero de ligne
+set ruler               " show the cursor position all the time
+set title               " Change le titre de la fenetre
 set titlestring=%<[%{split(getcwd(),'/')[-1]}]\ -\ %f%=%l/%L-%P  " Définit le titre de la fenetre
 set titlelen=50
 
 set showmatch           " Show matching brackets.
 set hlsearch            " Color le texte qui match la recherche
 
-set tw=120              " Largeur d'une ligne a 120 char
+set tw=79               " Largeur d'une ligne a 79 char (80 - 1 : pep8 checkers)
+set colorcolumn=+1      " Display a vertical line to show the line length limit
 set nowrap              " Ne pas couper les lignes trop longue
 set sidescroll=5        " un Scroll horizontale plus doux
 set scrolloff=4         " 4 ligne visible au dessus/dessous du curseur
@@ -114,16 +105,15 @@ set stl+=%n\            " Buffer number
 set stl+=%f\            " Name of current file (relative path)
 set stl+=%m             " Modified flag "[+]"
 set stl+=%r             " Read-Only flag
+set stl+=%q             " Quickfix flag
 set stl+=%h             " Help flag
-set stl+=%w             " Don't know this one
+set stl+=%w             " Preview window flag "[Preview]"
 set stl+=%y\            " File Type
 set stl+=%=             " Separate Right and Left Side
 set stl+=line\ %03.3l   " Line number
-set stl+=\ ,              " a Coma
+set stl+=,\             " a Coma
 set stl+=col\ %03.3c\   " Column number
 set stl+=%03.3p%%       " Percentage
-
-set ruler               " show the cursor position all the time
 
 set wmnu                    " Un menu qui déchire : Wildmenu
 set wim=longest:full,full   " Wildmode
@@ -134,8 +124,7 @@ set suffixes=.jpg,.png,.jpeg,.gif,.bak,~,.swp,.swo,.o,.info,.aux,.log,.dvi,.bbl,
 
 set directory=/tmp
 
-"let html_my_rendering=0
-let html_no_rendering=1
+"let html_no_rendering=1
 
 " GitGrep implemantation
 " http://vim.wikia.com/wiki/Git_grep
