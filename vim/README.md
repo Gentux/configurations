@@ -7,3 +7,4 @@ Installed extensions list:
 * enhanced-commentify
 * syntastic
 * Vimap
+* vim-ipython (https://github.com/ivanov/vim-ipython)
