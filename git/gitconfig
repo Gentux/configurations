@@ -1,0 +1,14 @@
+[user]
+    email = romain@soufflet.io
+    name = Romain Soufflet
+[alias]
+    aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+    lc = log ORIG_HEAD.. --stat --no-merges
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    gitdir=$(git rev-parse --git-dir); scp -p -P 29418 Gentux@review.openstack.org:hooks/commit-msg ${gitdir}/hooks/
+[color]
+    ui = auto
+[push]
+    default = simple
+[gitreview]
+	username = Gentux
