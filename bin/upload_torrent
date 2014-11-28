@@ -1,0 +1,3 @@
+#!/bin/bash
+
+scp "$1" gentux@home:/home/gentux/rtorrent/torrents/
