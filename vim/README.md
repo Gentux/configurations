@@ -1,10 +1,5 @@
 VIM
 ===
 
-Installed extensions list:
-
-* NERDTree
-* enhanced-commentify
-* syntastic
-* Vimap
-* vim-ipython (https://github.com/ivanov/vim-ipython)
+Since I discovered [**Vundle**](https://github.com/gmarik/Vundle.vim),
+extenssions are listed inside the **vimrc** file.
