@@ -5,6 +5,7 @@ import json
 import re
 
 import pymongo
+import six
 
 import imap_cli
 import imap_cli.config
