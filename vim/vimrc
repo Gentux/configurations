@@ -1,7 +1,25 @@
 set nocompatible            " Use Vim defaults (much better!)
 set fileencodings=utf-8     " Encodage UTF-8
 
-filetype plugin indent on
+filetype off                    " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'tpope/vim-fugitive'
+Plugin 'gentux/vimap'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'scrooloose/syntastic'
+Plugin 'altercation/vim-colors-solarized'
+
+call vundle#end()
+
+filetype plugin indent on       " required
 
 if has("autocmd")
     " When editing a file, always jump to the last cursor position
@@ -15,6 +33,7 @@ if has("autocmd")
     autocmd BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
 
     au BufWinEnter *.mako set syntax=mako
+    au BufWinEnter *.md set syntax=markdown
     autocmd BufEnter * :syntax sync fromstart
 endif
 
