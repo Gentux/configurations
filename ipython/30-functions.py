@@ -9,3 +9,8 @@ def grep(iterable, exp):
         if elem.find(exp) >= 0:
             ret.append(elem)
     return ret
+
+
+def visualize(obj):
+    """Wrap anything into visualizable object"""
+    return Visualizer(obj)
