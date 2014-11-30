@@ -1,6 +1,4 @@
 set nocompatible            " Use Vim defaults (much better!)
-set fileencodings=utf-8     " Encodage UTF-8
-
 filetype off                    " required
 
 " set the runtime path to include Vundle and initialize
@@ -20,6 +18,8 @@ Plugin 'altercation/vim-colors-solarized'
 call vundle#end()
 
 filetype plugin indent on       " required
+set fileencodings=utf-8         " Encodage UTF-8
+set directory=/tmp
 
 if has("autocmd")
     " When editing a file, always jump to the last cursor position
@@ -28,97 +28,23 @@ if has("autocmd")
                 \   exe "normal! g'\"" |
                 \ endif
 
-    " don't write swapfile on most commonly used directories for
-    " NFS mounts or USB sticks
-    autocmd BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
-
     au BufWinEnter *.mako set syntax=mako
     au BufWinEnter *.md set syntax=markdown
     autocmd BufEnter * :syntax sync fromstart
 endif
 
-set dictionary+=%
-set complete+=k
-
-" On efface tout les markeur de recherche avec <space>
-nnoremap <silent> <Space> :silent noh<Bar>echo<CR>
-
-" Comment out selected line
-"vnoremap <leader>c <C-v>0I#<ESC>
-
-" Save Syndrom Decease
-map     <F2>    :wa<bar>exe<space>"mksession! ~/sessions/".split(getcwd(), '/')[-1]<CR>
-imap    <F2>    <c-o><F2>
-
-" NERDTree Toggle
-map     <F4>    :NERDTreeToggle<CR>
-imap    <F4>    <ESC><F4>a
-
-" Moving tab to tab
-noremap     <F8>    gT
-noremap     <F9>    gt
-
-imap    <F8>    <c-o><F8>
-imap    <F9>    <c-o><F9>
-
-map     <M-n>   <C-w>w
-map     <M-h>   <C-w>h
-map     <M-j>   <C-w>j
-map     <M-k>   <C-w>k
-map     <M-l>   <C-w>l
-imap     <M-n>   <C-w>w
-imap     <M-h>   <C-w>h
-imap     <M-j>   <C-w>j
-imap     <M-k>   <C-w>k
-imap     <M-l>   <C-w>l
-
+" Visual
 syntax on               " Coloration Syntaxique
 set bg=dark             " Set Background pour la visibilité
-set expandtab           " On utilise des espace plutot que des tabulation
-
 set number              " Numero de ligne
 set ruler               " show the cursor position all the time
 set title               " Change le titre de la fenetre
 set titlestring=%<[%{split(getcwd(),'/')[-1]}]\ -\ %f%=%l/%L-%P  " Définit le titre de la fenetre
 set titlelen=50
-
 set showmatch           " Show matching brackets.
 set hlsearch            " Color le texte qui match la recherche
-
-set tw=79               " Largeur d'une ligne a 79 char (80 - 1 : pep8 checkers)
-set colorcolumn=+1      " Display a vertical line to show the line length limit
-set nowrap              " Ne pas couper les lignes trop longue
-set sidescroll=5        " un Scroll horizontale plus doux
-set scrolloff=4         " 4 ligne visible au dessus/dessous du curseur
-
-set softtabstop=4
-set tabstop=4
-set shiftwidth=4
-
-" iskeyword (isk for short) definit ce qu'est un mot
-set iskeyword=a-z       " Peut contenire les lettre de 'a' à 'z'
-set isk+=A-Z            " Peut contenire les lettre de 'A' à 'Z'
-set isk+=48-57          " Peut contenire les chiffres de 0 à 9
-set isk+=_              " Peut contenire '_'
-set isk+=-              " Peut contenire '-'
-
-set history=100         " Keep 100 lines of command line history
-set viminfo='20,\"50    " read/write a .viminfo file, don't store more
-set bs=indent,eol,start " allow backspacing over everything in insert mode
-
-" session options, when saving my work
-"   Blank pages
-"   Current dir
-"   Help pages
-"   Open tabs
-set ssop=blank,buffers,curdir,localoptions,options,resize,tabpages,winpos,winsize
-
-set showcmd             " Show (partial) command in status line.
-set mouse=a
-
 set showtabline=2       " Affiche en permanence la tab barre
 set laststatus=2        " Affiche en permanence la barre de status
-
 set statusline=%<       " Truncate line if too long
 set stl+=%n\            " Buffer number
 set stl+=%f\            " Name of current file (relative path)
@@ -134,16 +60,38 @@ set stl+=,\             " a Coma
 set stl+=col\ %03.3c\   " Column number
 set stl+=%03.3p%%       " Percentage
 
+" Editing
+set tw=79               " Largeur d'une ligne a 79 char (80 - 1 : pep8 checkers)
+set colorcolumn=+1      " Display a vertical line to show the line length limit
+set nowrap              " Ne pas couper les lignes trop longue
+set sidescroll=5        " un Scroll horizontale plus doux
+set scrolloff=20        " 4 ligne visible au dessus/dessous du curseur
+set expandtab           " On utilise des espace plutot que des tabulation
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
+
+" Autocompletion
+set dictionary+=%
+set complete+=k
+set iskeyword=a-z       " Words can contains letters from 'a' to 'z'
+set isk+=A-Z            " Words can contains letters from 'A' to 'Z'
+set isk+=48-57          " Words can contains numbers from 0 to 9
+set isk+=_              " Worts can contain '_'
+set isk+=-              " Worts can contain '-'
+
+" Session and internals
+set history=100         " Keep 100 lines of command line history
+set viminfo='20,\"50    " read/write a .viminfo file, don't store more
+set bs=indent,eol,start " allow backspacing over everything in insert mode
+set ssop=blank,buffers,curdir,localoptions,options,resize,tabpages,winpos,winsize
+set showcmd             " Show (partial) command in status line.
+set mouse=a
 set wmnu                    " Un menu qui déchire : Wildmenu
 set wim=longest:full,full   " Wildmode
 set wig=*.o,*#,*~,*.dll,*.so,*.a,*.pyc
-
 "definit une priorité par les extensions : test.jpg avant test.png
 set suffixes=.jpg,.png,.jpeg,.gif,.bak,~,.swp,.swo,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyo
-
-set directory=/tmp
-
-"let html_no_rendering=1
 
 " GitGrep implemantation
 " http://vim.wikia.com/wiki/Git_grep
@@ -158,3 +106,32 @@ func GitGrep(...)
     let &grepprg = save
 endfun
 command -nargs=? G call GitGrep(<f-args>)
+
+" Mappings
+" On efface tout les markeur de recherche avec <space>
+nnoremap <silent> <Space> :silent noh<Bar>echo<CR>
+
+" Save Syndrom Decease
+map     <F2>    :wa<bar>exe<space>"mksession! ~/sessions/".split(getcwd(), '/')[-1]<CR>
+imap    <F2>    <c-o><F2>
+
+" NERDTree Toggle
+map     <F4>    :NERDTreeToggle<CR>
+imap    <F4>    <c-o><F4>
+
+" Moving tab to tab (remove that)
+noremap     <F8>    gT
+imap    <F8>    <c-o><F8>
+noremap     <F9>    gt
+imap    <F9>    <c-o><F9>
+
+map     <M-n>   <C-w>w
+map     <M-h>   <C-w>h
+map     <M-j>   <C-w>j
+map     <M-k>   <C-w>k
+map     <M-l>   <C-w>l
+imap     <M-n>   <C-w>w
+imap     <M-h>   <C-w>h
+imap     <M-j>   <C-w>j
+imap     <M-k>   <C-w>k
+imap     <M-l>   <C-w>l
