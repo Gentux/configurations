@@ -17,7 +17,7 @@ di = {
     'key6': 'value6',
     }
 
-di = {
+di2 = {
     '2key1': '2value1',
     '2key2': '2value2',
     '2key3': '2value3',
