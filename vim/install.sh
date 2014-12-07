@@ -10,5 +10,6 @@ VIM_CONFIG_DIR=$(readlink -e $0)
 ln -s ${VIM_CONFIG_DIR}/vimrc   ~/.vimrc
 ln -s ${VIM_CONFIG_DIR}/gvimrc  ~/.gvimrc
 ln -s ${VIM_CONFIG_DIR}/ftplugin/dot.vim            ${VIMDIR}/ftplugin/
+ln -s ${VIM_CONFIG_DIR}/ftplugin/html.vim           ${VIMDIR}/ftplugin/
 ln -s ${VIM_CONFIG_DIR}/ftplugin/javascript.vim     ${VIMDIR}/ftplugin/
 ln -s ${VIM_CONFIG_DIR}/ftplugin/python.vim         ${VIMDIR}/ftplugin/
