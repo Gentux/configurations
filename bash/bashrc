@@ -150,7 +150,11 @@ function unmark {
     rm -i $MARKPATH/$1 
 }
 function marks {
-    ls -l $MARKPATH | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
+    for mark in $MARKPATH/* ; do
+        MARKNAME=$(basename $mark);
+        MARKTARGET=$(readlink $mark);
+        echo "${MARKNAME} -> ${MARKTARGET}";
+    done | column -t
 }
 [ -f .jump-completion.bash ] && source .jump-completion.bash
 
