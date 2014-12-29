@@ -1,0 +1,6 @@
+startup_message off
+
+caption always
+caption string "%w %= %c"
+
+bind M-1 select 0
