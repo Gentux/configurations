@@ -1,0 +1,21 @@
+# LS
+alias ll='ls -lh'
+alias la='ls -lhA'
+alias l='ls -CF'
+
+# Pserve
+alias pserve='[ -f development-local.ini ] && \
+    paster serve --reload development-local.ini || \
+    paster serve --reload development.ini ; \
+    notify-send --expire-time=500 --hint=int:transient:1 "pserve error" $PWD'
+
+alias rdesktop='rdesktop -u test -p test -g 1280x720'
+
+# ALIASES
+alias ipy='ipython'
+alias m='imapcli'
+
+# Aptitude
+alias aptitude='launch_ncurses_apps aptitude'
+alias mutt='launch_ncurses_apps mutt'
+alias tig='launch_ncurses_apps tig'

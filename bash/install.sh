@@ -4,3 +4,4 @@ CURRENT_PATH=$(dirname $(readlink -e $0))
 HOME_DIR=${HOME}
 
 ln -s ${CURRENT_PATH}/bashrc ~/.bashrc
+ln -s ${CURRENT_PATH}/bash_aliases ~/.bash_aliases

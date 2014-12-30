@@ -41,12 +41,12 @@ force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+        # We have color support; assume it's compliant with Ecma-48
+        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+        # a case would tend to support setf rather than setaf.)
+        color_prompt=yes
     else
-	color_prompt=
+        color_prompt=
     fi
 fi
 
@@ -70,37 +70,37 @@ else
 fi
 unset color_prompt force_color_prompt
 
-# If this is an xterm set the title to user@host:dir
-#case "$TERM" in
-#xterm*|rxvt*)
-#    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-#    ;;
-#*)
-#    ;;
-#esac
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    #alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ll='ls -lh'
-alias la='ls -lhA'
-alias l='ls -CF'
+# Functions definition
+function set_title() {
+    if [ "screen" = ${TERM} ]; then
+        echo -ne "\033k[${PWD##*/}]\033\\"
+    fi
+}
+
+function launch_ncurses_apps() {
+    if [ "screen" = ${TERM} ]; then
+        echo -ne "\033k${1##*/}\033\\"
+    fi
+    $@
+}
+
+function c {
+    echo "$@" | bc
+}
+function histfind {
+    grep -i "$@" $HISTFILE
+}
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -112,26 +112,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-function set_title() {
-    dir=${PWD##*/}
-    host=$(hostname)
-    whoami=$(whoami)
-    echo -ne "\033]0;[$dir]:$whoami@$host\007"
-}
-
 PROMPT_COMMAND='set_title'
-
-# ALIASES
-alias pserve='[ -f development-local.ini ] && paster serve --reload development-local.ini || \
-    paster serve --reload development.ini ; notify-send --expire-time=500 --hint=int:transient:1 "pserve error" $PWD'
-alias gk='gitk --all'
-alias ipyq='ipython qtconsole'
-alias ipyn='ipython notebook --pylab=inline --deep-reload --no-browser'
-alias ipy='ipython'
-alias bank='boobank list && boobank history 08110368754.EUR@hsbc'
-alias rdesktop='rdesktop -u test -p test -g 1280x720'
-alias m='imapcli'
-
 
 # JUMP
 export MARKPATH=$HOME/.marks
@@ -139,15 +120,15 @@ for i in $MARKPATH/*; do
     export jmp$(basename $i | tr '.' '_' | tr '-' '_')=$(readlink $i);
 done
 
-function jump { 
+function jump {
     cd -P $MARKPATH/$1 2>/dev/null || echo "No such mark: $1"
 }
-function mark { 
+function mark {
     mkdir -p $MARKPATH; ln -s $(pwd) $MARKPATH/$1
     export jmp$(${1} | tr '.' '_' | tr '-' '_')=$(pwd)
 }
-function unmark { 
-    rm -i $MARKPATH/$1 
+function unmark {
+    rm -i $MARKPATH/$1
 }
 function marks {
     for mark in $MARKPATH/* ; do
@@ -160,12 +141,3 @@ function marks {
 
 # GIT COMPLETION
 [ -f .git-completion.bash ] && source .git-completion.bash
-
-
-#Calculator
-function c {
-    echo "$@" | bc
-}
-function histfind {
-    grep -i "$@" $HISTFILE
-}
