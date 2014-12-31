@@ -3,7 +3,6 @@ startup_message off
 activity "%c activity -> %n%f %t"
 caption always "%{= Wk}%-w%{= Bw}%n %t%{-}%+w %-="
 
-
 # Get rid of screen 0
 bind c screen 1
 bind ^c screen 1
@@ -11,6 +10,8 @@ bind 0 select 10
 screen 1  # Create initial window
 
 # Bindings
+escape ^oo
+
 bindkey ^[[1;3D prev            # Alt + left
 bindkey ^[[1;3C next            # Alt + right
 bindkey "\033\061" select 1     # Alt + 1
