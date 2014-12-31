@@ -1,6 +1,27 @@
 startup_message off
 
-caption always
-caption string "%w %= %c"
+activity "%c activity -> %n%f %t"
+caption always "%{= Wk}%-w%{= Bw}%n %t%{-}%+w %-="
 
-bind M-1 select 0
+
+# Get rid of screen 0
+bind c screen 1
+bind ^c screen 1
+bind 0 select 10
+screen 1  # Create initial window
+
+# Bindings
+bindkey ^[[1;3D prev            # Alt + left
+bindkey ^[[1;3C next            # Alt + right
+bindkey "\033\061" select 1     # Alt + 1
+bindkey "\033\062" select 2     # Alt + 2
+bindkey "\033\063" select 3     # Alt + 3
+bindkey "\033\064" select 4     # Alt + 4
+bindkey "\033\065" select 5     # Alt + 5
+bindkey "\033\066" select 6     # Alt + 6
+bindkey "\033\067" select 7     # Alt + 7
+bindkey "\033\068" select 8     # Alt + 8
+bindkey "\033\069" select 9     # Alt + 9
+bindkey "\033\060" select 10    # Alt + 0
+
+termcapinfo xterm* ti@:te@      # ScrollWheel
