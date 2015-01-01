@@ -90,6 +90,13 @@ function launch_ncurses_apps() {
     $@
 }
 
+function launch_ssh() {
+    if [ "screen" = ${TERM} ]; then
+        echo -ne "\033kssh ${1##*/}\033\\"
+    fi
+    ssh $@
+}
+
 function c {
     echo "$@" | bc
 }
