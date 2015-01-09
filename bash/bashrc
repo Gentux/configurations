@@ -79,7 +79,7 @@ fi
 # Functions definition
 function set_title() {
     if [ "screen" = ${TERM} ]; then
-        echo -ne "\033k[${PWD##*/}]\033\\"
+        echo -ne "\033k[$(echo ${PWD##*/} | cut -c1-15)]\033\\"
     fi
 }
 
