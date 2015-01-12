@@ -5,3 +5,4 @@ HOME_DIR=${HOME}
 
 ln -s ${CURRENT_PATH}/bashrc ~/.bashrc
 ln -s ${CURRENT_PATH}/bash_aliases ~/.bash_aliases
+ln -s ${CURRENT_PATH}/dircolors ~/.dircolors
