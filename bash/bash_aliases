@@ -17,7 +17,9 @@ alias m='imapcli'
 
 # Aptitude
 alias aptitude='launch_ncurses_apps aptitude'
+alias htop='launch_ncurses_apps htop'
 alias mutt='launch_ncurses_apps mutt'
 alias tig='launch_ncurses_apps tig'
+alias tig='launch_ncurses_apps vim'
 
 alias ssh='launch_ssh'
