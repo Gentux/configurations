@@ -2,7 +2,7 @@
 
 
 VIMDIR=$(realpath ~/.vim/)
-VIM_CONFIG_DIR=$(readlink -e $0)
+VIM_CONFIG_DIR=$(dirname $(readlink -e ${0}))
 
 [ -d ${VIMDIR} ] || mkdir ${VIMDIR}
 [ -d ${VIMDIR}/ftplugin ] || mkdir ${VIMDIR}/ftplugin
