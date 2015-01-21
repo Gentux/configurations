@@ -80,12 +80,16 @@ fi
 function set_title() {
     if [ "screen" = ${TERM} ]; then
         echo -ne "\033k[$(echo ${PWD##*/} | cut -c1-15 | slugify)]\033\\"
+    elif [ "xterm" = ${TERM} ]; then
+        echo -ne "\e]2;[$(echo ${PWD##*/})]\a"
     fi
 }
 
 function launch_ncurses_apps() {
     if [ "screen" = ${TERM} ]; then
         echo -ne "\033k${1##*/}\033\\"
+    elif [ "xterm" = ${TERM} ]; then
+        echo -en "\e]0;${1##*/}\a"
     fi
     $@
 }
@@ -93,6 +97,8 @@ function launch_ncurses_apps() {
 function launch_ssh() {
     if [ "screen" = ${TERM} ]; then
         echo -ne "\033kssh ${1##*/}\033\\"
+    elif [ "xterm" = ${TERM} ]; then
+        echo -en "\e]0;ssh ${1##*/}\a"
     fi
     ssh $@
 }
