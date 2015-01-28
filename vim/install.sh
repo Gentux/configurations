@@ -1,7 +1,7 @@
 #!/bin/bash -xe
 
 
-VIMDIR=$(realpath ~/.vim/)
+VIMDIR=$(readlink -e ~/.vim/)
 VIM_CONFIG_DIR=$(dirname $(readlink -e ${0}))
 
 [ -d ${VIMDIR} ] || mkdir ${VIMDIR}

@@ -1,7 +1,7 @@
 #!/bin/bash -xe
 
 CURRENT_PATH=$(dirname $(readlink -e $0))
-BIN_PATH=$(realpath ~/bin/)
+BIN_PATH=$(readlink -e ~/bin/)
 
 [ -d ${BIN_PATH} ] || mkdir -p ${BIN_PATH}
 
