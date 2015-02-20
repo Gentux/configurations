@@ -32,6 +32,8 @@ if has("autocmd")
     au BufWinEnter *.mako set syntax=mako
     au BufWinEnter *.md set syntax=markdown
     autocmd BufEnter * :syntax sync fromstart
+
+    autocmd BufEnter *.py let g:syntastic_python_checker = 'flake8'
 endif
 
 " Visual
