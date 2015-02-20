@@ -76,6 +76,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto'
 fi
 
+# Set PATH
+export PATH="${PATH}:.local/bin/"
+
 # Functions definition
 function set_title() {
     if [ "screen" = ${TERM} ]; then
