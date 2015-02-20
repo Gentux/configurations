@@ -2,6 +2,7 @@
   title_transmit_bg_color = "#999999"
   title_inactive_bg_color = "#DDDDDD"
   focus = system
+  inactive_color_offset = 0.75
   tab_position = bottom
 [keybindings]
   switch_to_tab_10 = <Alt>0
