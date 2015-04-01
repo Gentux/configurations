@@ -21,3 +21,5 @@ alias htop='launch_ncurses_apps htop'
 alias mutt='launch_ncurses_apps mutt'
 alias tig='launch_ncurses_apps tig'
 
+
+alias fuck='sudo $(history -p \!\!)' 
