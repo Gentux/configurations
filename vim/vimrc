@@ -138,3 +138,6 @@ imap     <M-h>   <C-w>h
 imap     <M-j>   <C-w>j
 imap     <M-k>   <C-w>k
 imap     <M-l>   <C-w>l
+
+
+let NERDTreeIgnore=['\.pyc$', '\~$']
