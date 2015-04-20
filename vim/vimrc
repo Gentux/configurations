@@ -14,7 +14,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'ivanov/vim-ipython'
 Plugin 'tpope/vim-fugitive'
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+Bundle "lepture/vim-jinja"
 
 call vundle#end()
 
