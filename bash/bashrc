@@ -65,9 +65,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto'
 fi
 
-# Set PATH
-export PATH="${HOME}/.local/bin/:${PATH}"
-
 # Functions definition
 function set_title() {
     if [ "screen" = ${TERM} ]; then
@@ -159,3 +156,8 @@ function marks {
 [ -f .git-completion.bash ] && source .git-completion.bash
 
 export EDITOR=/usr/bin/vim
+export GOPATH=/home/gentux/projects/gocode/
+
+# Set PATH
+export PATH="${HOME}/.local/bin/:${PATH}"
+export PATH="${GOPATH}/bin/:${PATH}"
