@@ -1,8 +1,7 @@
 setlocal noexpandtab
+setlocal tabstop=2
 
 let $GOPATH="/home/gentux/projects/gocode/"
 
 compiler go
 
-" Set gocode completion
-" setlocal omnifunc=go#complete#Complete
