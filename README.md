@@ -1,5 +1,4 @@
-Configurations
-==============
+# Configurations
 
 All configuration files I need to work
 
@@ -9,8 +8,7 @@ install configuration files.
 Sometimes, you'll find another **README** to explain how I use these config.
 
 
-Overview
-========
+# Overview
 
 These configurations files are written day by day since I began to work as a
 software engineer.
