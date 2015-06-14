@@ -133,11 +133,6 @@ map     <M-h>   <C-w>h
 map     <M-j>   <C-w>j
 map     <M-k>   <C-w>k
 map     <M-l>   <C-w>l
-imap     <M-n>   <C-w>w
-imap     <M-h>   <C-w>h
-imap     <M-j>   <C-w>j
-imap     <M-k>   <C-w>k
-imap     <M-l>   <C-w>l
 
 
 let NERDTreeIgnore=['\.pyc$', '\~$']
