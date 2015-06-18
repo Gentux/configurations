@@ -13,8 +13,9 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'ivanov/vim-ipython'
 Plugin 'tpope/vim-fugitive'
-Plugin 'godlygeek/tabular'
-Bundle "lepture/vim-jinja"
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 
@@ -136,3 +137,8 @@ map     <M-l>   <C-w>l
 
 
 let NERDTreeIgnore=['\.pyc$', '\~$']
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
