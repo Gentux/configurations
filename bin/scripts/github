@@ -1,0 +1,16 @@
+#!/bin/bash
+
+source ~/.githubrc
+
+CURL_ARGS="-s -u ${USERNAME}:${PASSWORD}"
+JQ_FILTER=".[] | {projects: .repository.full_name, subject: .subject.title, url: .url}"
+NOTIFICATION_URL="https://api.github.com/notifications"
+SUBCOMMAND=${1}
+
+if [ -z ${SUBCOMMAND} ]; then
+    curl ${CURL_ARGS} ${NOTIFICATION_URL} | jq "${JQ_FILTER}"
+elif [ "read" == "${SUBCOMMAND}" ]; then
+    curl -X PUT -d '{"read": true}' ${CURL_ARGS} ${NOTIFICATION_URL}
+else
+    echo "You must give a valid subcommand"
+fi
