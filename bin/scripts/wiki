@@ -1,0 +1,9 @@
+#!/bin/bash
+
+WIKI_SEARCH=$1
+shift
+
+PARAMS="title=Special%3ASearch&profile=default&search=${WIKI_SEARCH}&fulltext=Search"
+WIKI_URL="https://en.wikipedia.org/w/index.php?${PARAMS}"
+
+xdg-open ${WIKI_URL}
