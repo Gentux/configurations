@@ -1,0 +1,9 @@
+#!/bin/bash
+
+GOOGLE_SEARCH=$1
+shift
+
+PARAMS="hl=fr&q=${GOOGLE_SEARCH}"
+GOOGLE_URL="https://encrypted.google.com/search?${PARAMS}"
+
+xdg-open ${WIKI_URL}
