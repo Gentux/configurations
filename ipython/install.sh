@@ -8,5 +8,5 @@ source ${CURRENT_PATH}/../function.sh
 [ -d ${IPYTHON_CONFIG_PATH} ] || mkdir -p ${IPYTHON_CONFIG_PATH}
 
 for PYTHON_SCRIPT in *.py; do
-    create_or_replace_symlink ${CURRENT_PATH}/${PYTHON_SCRIPT} ${IPYTHON_CONFIG_PATH}
+    create_or_replace_symlink ${CURRENT_PATH}/${PYTHON_SCRIPT} ${IPYTHON_CONFIG_PATH}/${PYTHON_SCRIPT}
 done
