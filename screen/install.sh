@@ -1,4 +1,4 @@
-#!/bin/bash -xe
+#!/bin/bash
 
 CURRENT_PATH=$(dirname $(readlink -e $0))
 

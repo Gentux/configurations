@@ -1,4 +1,4 @@
-#!/bin/bash -xe
+#!/bin/bash
 
 
 VIMDIR=$(readlink -e ~/.vim/)
