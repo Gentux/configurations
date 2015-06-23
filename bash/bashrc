@@ -156,8 +156,9 @@ function marks {
 [ -f .git-completion.bash ] && source .git-completion.bash
 
 export EDITOR=/usr/bin/vim
-export GOPATH=/home/gentux/projects/gocode/
+export GOPATH=/home/gentux/projects/gocode
 
 # Set PATH
 export PATH="${HOME}/.local/bin/:${PATH}"
 export PATH="${GOPATH}/bin/:${PATH}"
+export PATH="${HOME}/bin/:${PATH}"
