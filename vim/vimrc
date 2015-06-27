@@ -74,6 +74,8 @@ set expandtab           " On utilise des espace plutot que des tabulation
 set softtabstop=4
 set tabstop=4
 set shiftwidth=4
+set listchars=tab:--,trail:~,extends:>,precedes:<,nbsp:.
+set list
 
 " Autocompletion
 set dictionary+=%

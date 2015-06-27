@@ -1,6 +1,3 @@
-set listchars=tab:--,trail:~,extends:>,precedes:<,nbsp:.
-set list
-
 set guioptions=         " Empty guioptions to avoid annoying toolbar
 set guioptions+=a       " Auto-select
 set guioptions+=c       " Console-like dialog
