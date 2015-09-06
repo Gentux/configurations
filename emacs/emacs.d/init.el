@@ -25,10 +25,6 @@
 (setq initial-scratch-message "")
 (setq inhibit-startup-message t)
 
-;; Don't let Emacs hurt your ears
-(setq visible-bell t)
-
-
 ;; Set backup in its own directory
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
