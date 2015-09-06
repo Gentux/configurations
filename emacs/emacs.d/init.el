@@ -18,6 +18,9 @@
 ;; Prevent the cursor from blinking
 (blink-cursor-mode 0)
 
+;; Show line number
+(global-linum-mode 1)
+
 ;; Don't use messages that you don't read
 (setq initial-scratch-message "")
 (setq inhibit-startup-message t)
