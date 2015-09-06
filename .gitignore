@@ -1,1 +1,5 @@
 private/
+
+emacs/emacs.d/backups/
+emacs/emacs.d/elpa/
+emacs/emacs.d/auto-save-list/
