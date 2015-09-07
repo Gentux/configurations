@@ -16,6 +16,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'fatih/vim-go'
+Plugin 'leafgarland/typescript-vim'
 
 call vundle#end()
 
@@ -32,6 +33,7 @@ if has("autocmd")
 
     autocmd BufWinEnter *.mako set syntax=mako
     autocmd BufWinEnter *.md set syntax=markdown
+    autocmd BufWinEnter *.ts set syntax=typescript
     autocmd BufEnter * :syntax sync fromstart
 
     autocmd BufEnter *.py let g:syntastic_python_checker = 'flake8'
@@ -41,6 +43,7 @@ endif
 syntax on               " Coloration Syntaxique
 set bg=dark             " Set Background pour la visibilité
 set number              " Numero de ligne
+set relativenumber      " Numero de ligne
 set ruler               " show the cursor position all the time
 set title               " Change le titre de la fenetre
 set titlestring=%<[%{split(getcwd(),'/')[-1]}]\ -\ %f%=%l/%L-%P  " Définit le titre de la fenetre
