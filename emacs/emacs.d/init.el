@@ -10,24 +10,21 @@
 (when (display-graphic-p)
     (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
 
-;; Remove menu bars
+;; Remove useless elements
 (scroll-bar-mode 0)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
-
-;; Prevent the cursor from blinking
-(blink-cursor-mode 0)
-
-;; Show line number
-(global-linum-mode 1)
+(blink-cursor-mode 0) ;; Prevent the cursor from blinking
 
 ;; Don't use messages that you don't read
 (setq initial-scratch-message "")
 (setq inhibit-startup-message t)
 
+;; Show line number
+(global-linum-mode 1)
+
 ;; Set backup in its own directory
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-
 
 ;; Init Packaging system
 (require 'package)
@@ -37,10 +34,6 @@
 
 ;; Enable org-mode
 (require 'org)
-(require 'solarized)
-
-(load-theme 'solarized-dark t)
-
 ;; The following lines are always needed.  Choose your own keys.
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (global-set-key "\C-cl" 'org-store-link)
@@ -49,7 +42,12 @@
 (setq org-todo-keywords
       '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE")))
 
+(require 'solarized)
+(load-theme 'solarized-dark t)
 
+(require 'magit)
+
+;; Emacs automatic stuff I don't fully understand for now
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
