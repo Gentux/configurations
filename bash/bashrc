@@ -166,3 +166,10 @@ export GOPATH=/home/gentux/projects/gocode
 export PATH="${HOME}/.local/bin/:${PATH}"
 export PATH="${GOPATH}/bin/:${PATH}"
 export PATH="${HOME}/bin/:${PATH}"
+
+HL_NO_BACKGROUNG=$(echo -e '\e[49m')
+HL_RED_BACKGROUD=$(echo -e '\e[41m')
+
+hl() {
+    sed -e "s/${1}/${HL_RED_BACKGROUD}&${HL_NO_BACKGROUNG}/"
+}
