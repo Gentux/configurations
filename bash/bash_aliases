@@ -24,3 +24,5 @@ alias tig='launch_ncurses_apps tig'
 alias backup_phone='./backup_restore_profile.sh -b'
 
 alias fuck='sudo $(history -p \!\!)' 
+
+alias nasatv='vlc http://nasatv-lh.akamaihd.net/i/NASA_101@319270/master.m3u8'
