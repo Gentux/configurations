@@ -1,10 +1,11 @@
 [user]
-    email = romain@soufflet.io
-    name = Romain Soufflet
+	email = romain.soufflet@nanocloud.com
+	name = Romain Soufflet
 [alias]
     aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
     lc = log ORIG_HEAD.. --stat --no-merges
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    #simplelog = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     simplelog = log --pretty=format:'%Cred%h%Creset - %C(yellow)%cr%Creset\t%s %Cgreen(%d) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --since='1 week ago'
     gitdir=$(git rev-parse --git-dir); scp -p -P 29418 Gentux@review.openstack.org:hooks/commit-msg ${gitdir}/hooks/
 [color]
@@ -13,3 +14,7 @@
     default = simple
 [gitreview]
     username = Gentux
+[gui]
+    tabsize = 2
+    wmstate = normal
+    geometry = 1920x987+-1+26 518 470

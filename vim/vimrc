@@ -15,8 +15,9 @@ Plugin 'ivanov/vim-ipython'
 Plugin 'tpope/vim-fugitive'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'mv/mv-vim-puppet'
 
 call vundle#end()
 
@@ -40,7 +41,7 @@ if has("autocmd")
 endif
 
 " Visual
-syntax on               " Coloration Syntaxique
+syntax enable               " Coloration Syntaxique
 set bg=dark             " Set Background pour la visibilité
 set number              " Numero de ligne
 set relativenumber      " Numero de ligne
@@ -68,7 +69,7 @@ set stl+=col\ %03.3c\   " Column number
 set stl+=%03.3p%%       " Percentage
 
 " Editing
-set tw=79               " Largeur d'une ligne a 79 char (80 - 1 : pep8 checkers)
+"set tw=79               " Largeur d'une ligne a 79 char (80 - 1 : pep8 checkers)
 set colorcolumn=+1      " Display a vertical line to show the line length limit
 set nowrap              " Ne pas couper les lignes trop longue
 set sidescroll=5        " un Scroll horizontale plus doux
