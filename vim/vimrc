@@ -73,7 +73,7 @@ set stl+=%03.3p%%       " Percentage
 set colorcolumn=+1      " Display a vertical line to show the line length limit
 set nowrap              " Ne pas couper les lignes trop longue
 set sidescroll=5        " un Scroll horizontale plus doux
-set scrolloff=20        " 4 ligne visible au dessus/dessous du curseur
+set scrolloff=4         " 4 ligne visible au dessus/dessous du curseur
 set expandtab           " On utilise des espace plutot que des tabulation
 set softtabstop=4
 set tabstop=4
@@ -135,11 +135,11 @@ imap    <F8>    <c-o><F8>
 noremap     <F9>    gt
 imap    <F9>    <c-o><F9>
 
-map     <M-n>   <C-w>w
-map     <M-h>   <C-w>h
-map     <M-j>   <C-w>j
-map     <M-k>   <C-w>k
-map     <M-l>   <C-w>l
+map     <D-n>   <C-w>w
+map     <D-h>   <C-w>h
+map     <D-j>   <C-w>j
+map     <D-k>   <C-w>k
+map     <D-l>   <C-w>l
 
 
 let NERDTreeIgnore=['\.pyc$', '\~$']

@@ -15,12 +15,6 @@ alias rdesktop='rdesktop -u test -p test -g 1280x720'
 alias ipy='ipython'
 alias m='imapcli'
 
-# Aptitude
-alias aptitude='launch_ncurses_apps aptitude'
-alias htop='launch_ncurses_apps htop'
-alias mutt='launch_ncurses_apps mutt'
-alias tig='launch_ncurses_apps tig'
-
 alias backup_phone='./backup_restore_profile.sh -b'
 
 alias fuck='sudo $(history -p \!\!)' 

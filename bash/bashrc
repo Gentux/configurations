@@ -57,9 +57,11 @@ if [ "$color_prompt" = yes ]; then
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\W]\[\033[00m\]:\[\033[01;35m\]\u@gentop\[\033[00m\]:\[\033[01;92m\]$(__git_ps1 "(%s)")\[\033[00m\]\$ '
 unset color_prompt force_color_prompt
 
 # enable color support of ls and also add handy aliases
+export CLICOLOR=1
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
@@ -72,31 +74,6 @@ function set_title() {
     elif [ "xterm" = ${TERM} ]; then
         echo -ne "\e]2;[$(echo ${PWD##*/})]\a"
     fi
-}
-
-function launch_ncurses_apps() {
-    if [ "screen" = ${TERM} ]; then
-        echo -ne "\033k${1##*/}\033\\"
-    elif [ "xterm" = ${TERM} ]; then
-        echo -en "\e]0;${1##*/}\a"
-    fi
-    $@
-}
-
-function launch_ssh() {
-    if [ "screen" = ${TERM} ]; then
-        echo -ne "\033kssh ${1##*/}\033\\"
-    elif [ "xterm" = ${TERM} ]; then
-        echo -en "\e]0;ssh ${1##*/}\a"
-    fi
-    ssh $@
-}
-
-function c {
-    echo "$@" | bc
-}
-function histfind {
-    grep -i "$@" $HISTFILE
 }
 
 function devmode {

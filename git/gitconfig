@@ -1,5 +1,5 @@
 [user]
-	email = romain.soufflet@nanocloud.com
+	email = romain@soufflet.io
 	name = Romain Soufflet
 [alias]
     aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
