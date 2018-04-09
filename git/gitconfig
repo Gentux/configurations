@@ -18,3 +18,5 @@
     tabsize = 2
     wmstate = normal
     geometry = 1920x987+-1+26 518 470
+[credential]
+	helper = cache --timeout=7200

@@ -76,3 +76,4 @@ For that, you can find these line in the bashrc:
 
     PROMPT_COMMAND='set_title'
     PROMPT_DIRTRIM=2
+
