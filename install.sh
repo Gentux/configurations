@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-CONFIGURATION_REPO_DIR=$(dirname $(readlink -e $0))
+CONFIGURATION_REPO_DIR=$(realpath $(readlink -e $0))
 
 for DIR in $(ls ${CONFIGURATION_REPO_DIR}); do
     [ -d $DIR ] || continue;

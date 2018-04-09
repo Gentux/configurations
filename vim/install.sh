@@ -1,8 +1,8 @@
 #!/bin/bash
 
 
-VIMDIR=$(readlink -e ~/.vim/)
-VIM_CONFIG_DIR=$(dirname $(readlink -e ${0}))
+VIMDIR=$(realpath ~/.vim/)
+VIM_CONFIG_DIR=$(dirname $(realpath ${0}))
 VUNDLE_REPOS_URL="https://github.com/gmarik/Vundle.vim.git"
 
 source ${VIM_CONFIG_DIR}/../function.sh

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CURRENT_PATH=$(dirname $(readlink -e $0))
+CURRENT_PATH=$(dirname $(realpath $0))
 
 source ${CURRENT_PATH}/../function.sh
 
